@@ -2,6 +2,7 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "./tasks/simulateGame";
 import "./tasks/simulatePlayer1Timeout";
+import "./tasks/simulatePlayer2Timeout";
 
 const config: HardhatUserConfig = {
   solidity: {
