@@ -35,10 +35,9 @@ task(
 
     const RPSPlayer2Instance = RPS.connect(player2);
 
-    const player2Plays = await RPSPlayer2Instance.play(2, {
+    await RPSPlayer2Instance.play(2, {
       value: ethers.parseEther(stake.toString()),
     });
-    console.log("## Player 2 plays:", player2Plays);
 
     const movePlayed = await RPSPlayer2Instance.c2();
     console.log("## Player 2 played move:", movePlayed.toString());
@@ -48,8 +47,8 @@ task(
     await ethers.provider.send("evm_increaseTime", [300]);
     await ethers.provider.send("evm_mine", []);
 
-    const player2Timeout = await RPSPlayer2Instance.j1Timeout();
-    console.log("## Player 2 called j1Timeout:", player2Timeout);
+    await RPSPlayer2Instance.j1Timeout();
+    console.log("## Player 2 called j1Timeout");
 
     const finalBalance1 = await ethers.provider.getBalance(player1.address);
     const finalBalance2 = await ethers.provider.getBalance(player2.address);

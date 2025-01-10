@@ -29,14 +29,14 @@ task("simulatePlayer2Timeout", "Simulate a game where player 2 never plays")
 
     const currentStake = await RPS.stake();
     console.log(`## Stake: ${ethers.formatEther(currentStake)} ETH`);
-    
+
     // Simulate time passing
     console.log(`## Simulating the timeout of 5 minutes passing`);
     await ethers.provider.send("evm_increaseTime", [300]);
     await ethers.provider.send("evm_mine", []);
 
-    const player1Timeout = await RPS.j2Timeout();
-    console.log("## Player 1 called j2Timeout:", player1Timeout);
+    await RPS.j2Timeout();
+    console.log("## Player 1 called j2Timeout");
 
     const finalBalance1 = await ethers.provider.getBalance(player1.address);
     const finalBalance2 = await ethers.provider.getBalance(player2.address);

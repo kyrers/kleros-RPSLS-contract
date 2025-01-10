@@ -35,16 +35,15 @@ task("simulateGame", "Simulate an RPS game")
     const currentStake = await RPS.stake();
     console.log(`## Stake: ${ethers.formatEther(currentStake)} ETH`);
 
-    const player2Plays = await RPS.connect(player2).play(move2, {
+    await RPS.connect(player2).play(move2, {
       value: ethers.parseEther(stake.toString()),
     });
-    console.log("## Player 2 plays:", player2Plays);
 
     const movePlayed = await RPS.c2();
     console.log("## Player 2 played move:", movePlayed.toString());
 
-    const player1Solves = await RPS.solve(move1, salt);
-    console.log("## Player 1 solves the game:", player1Solves);
+    await RPS.solve(move1, salt);
+    console.log("## Player 1 solved the game");
 
     const finalBalance1 = await ethers.provider.getBalance(player1.address);
     const finalBalance2 = await ethers.provider.getBalance(player2.address);
