@@ -1,6 +1,7 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "./tasks/simulateGame";
+import "./tasks/simulatePlayer1Timeout";
 
 const config: HardhatUserConfig = {
   solidity: {
