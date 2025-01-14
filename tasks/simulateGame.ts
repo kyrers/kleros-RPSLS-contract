@@ -20,13 +20,11 @@ task("simulateGame", "Simulate an RPS game")
       `## Player 2 Initial Balance: ${ethers.formatEther(intialBalance2)} ETH`
     );
 
-    // Deploy the contract
+    // Deploy the contracts
     const RPSFactory = await ethers.getContractFactory("RPS");
-    const commitmentHash = ethers.solidityPackedKeccak256(
-      ["uint8", "uint256"],
-      [move1, salt]
-    );
-
+    const HasherFactory = await ethers.getContractFactory("Hasher");
+    const Hasher = await HasherFactory.deploy();
+    const commitmentHash = await Hasher.hash(move1, salt);
     const RPS = await RPSFactory.deploy(commitmentHash, player2.address, {
       value: ethers.parseEther(stake.toString()),
     });

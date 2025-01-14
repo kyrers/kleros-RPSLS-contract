@@ -21,10 +21,9 @@ task(
     );
 
     const RPSFactory = await ethers.getContractFactory("RPS");
-    const commitmentHash = ethers.solidityPackedKeccak256(
-      ["uint8", "uint256"],
-      [1, 12345]
-    );
+    const HasherFactory = await ethers.getContractFactory("Hasher");
+    const Hasher = await HasherFactory.deploy();
+    const commitmentHash = await Hasher.hash(1, 12345);
     const RPS = await RPSFactory.deploy(commitmentHash, player2.address, {
       value: ethers.parseEther(stake.toString()),
     });
