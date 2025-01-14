@@ -2,6 +2,7 @@
 
 This project contains the contract for the Kleros Rock-Paper-Scissor-Lizard-Spock test exercise.
 It also contains some tasks so one can interact with instances of the contract to explore how it works.
+Finally, an ignition module was created to deploy the `Hasher` contract to be used in the frontend;
 
 ### Project setup
 
@@ -34,4 +35,12 @@ npx hardhat simulatePlayer1Timeout --stake 5
 
 ```sh 
 npx hardhat simulatePlayer2Timeout --stake 5
+```
+
+### Deploying the Hasher contract
+
+First, choose and configure the network you need. Then, run the deploy module like:
+
+```sh
+npx hardhat ignition deploy ignition/modules/Hasher.ts --network localhost
 ```
