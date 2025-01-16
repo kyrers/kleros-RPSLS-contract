@@ -13,5 +13,5 @@ node_modules
 /coverage
 /coverage.json
 
-# Hardhat Ignition default folder for deployments against a local node
-ignition/deployments/chain-31337
+# Do not commit any deployments as version control isn't needed here
+ignition/deployments/
